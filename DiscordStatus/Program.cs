@@ -1,6 +1,5 @@
-﻿using System.Text.Json;
-using System.Text;
-using System.Runtime.InteropServices;
+﻿using Newtonsoft.Json;
+
 class Program
 {
     public static async Task Main()
@@ -9,13 +8,14 @@ class Program
         Discord.Activity activity1;
         Discord.Activity activity2;
 
-        activity1 = await JsonActivityToDiscord("activity.json");
+        activity1 = JsonActivityToDiscord("activity.json");
 
         long StartTimeUnix = DateTimeOffset.Now.ToUnixTimeSeconds();
 
-        using (FileStream fs = new FileStream("config.json", FileMode.Open))
+        using (StreamReader fs = new StreamReader("config.json"))
         {
-            appConfiguration = await JsonSerializer.DeserializeAsync<Config>(fs);
+            var json = fs.ReadToEnd();
+            appConfiguration = JsonConvert.DeserializeObject<Config>(json);
         }
 
         var discord = new Discord.Discord(appConfiguration.appId, (UInt64)Discord.CreateFlags.Default);
@@ -35,7 +35,7 @@ class Program
 
         while (true)
         {
-            activity2 = await JsonActivityToDiscord("activity.json");
+            activity2 = JsonActivityToDiscord("activity.json");
             if(Equals(activity2, activity1))
             {
                 
@@ -61,51 +61,16 @@ class Program
             Thread.Sleep(10000); 
         }
 
-        async Task<Discord.Activity> JsonActivityToDiscord(string jsonPath)
+        Discord.Activity JsonActivityToDiscord(string jsonPath)
         {
-            Activity jsonActivity = new Activity();
+            string jsonActivity;
 
-            using (FileStream fs = new FileStream(jsonPath, FileMode.Open))
+            using (StreamReader fs = new StreamReader(jsonPath))
             {
-                jsonActivity = await JsonSerializer.DeserializeAsync<Activity>(fs);
+                jsonActivity = fs.ReadToEnd();
             }
-            return new Discord.Activity
-            {
-                Type = (Discord.ActivityType)jsonActivity.Type,
-                ApplicationId = jsonActivity.ApplicationId,
-                Name = jsonActivity.Name,
-                State = jsonActivity.State,
-                Details = jsonActivity.Details,
-                Timestamps =
-                {
-                    Start = jsonActivity.Timestamps.Start,
-                    End = jsonActivity.Timestamps.End
-                },
-                Assets =
-                {
-                    LargeImage = jsonActivity.Assets.LargeImage,
-                    LargeText = jsonActivity.Assets.LargeText,
-                    SmallImage = jsonActivity.Assets.SmallImage,
-                    SmallText = jsonActivity.Assets.SmallText,
-                },
-                Party =
-                {
-                    Id = jsonActivity.Party.Id,
-                    Size =
-                    {
-                        CurrentSize = jsonActivity.Party.Size.CurrentSize,
-                        MaxSize = jsonActivity.Party.Size.MaxSize
-                    }
-                },
-                Secrets =
-                {
-                    Join = jsonActivity.Secrets.Join,
-                    Match = jsonActivity.Secrets.Match,
-                    Spectate = jsonActivity.Secrets.Spectate,
-                },
-                Instance = jsonActivity.Instance,
 
-            };
+            return JsonConvert.DeserializeObject<Discord.Activity>(jsonActivity);
         }
     }
 
