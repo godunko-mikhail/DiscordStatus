@@ -7,7 +7,7 @@ class Program
         Config appConfiguration;
         Discord.Activity activity1;
         Discord.Activity activity2;
-
+        Discord.Activity resultActivity;
         activity1 = JsonActivityToDiscord("activity.json");
 
         long StartTimeUnix = DateTimeOffset.Now.ToUnixTimeSeconds();
@@ -21,7 +21,10 @@ class Program
         var discord = new Discord.Discord(appConfiguration.appId, (UInt64)Discord.CreateFlags.Default);
         var activityManager = discord.GetActivityManager();
 
-        activityManager.UpdateActivity(activity1, (result) =>
+        resultActivity = activity1;
+        resultActivity.Timestamps.Start = StartTimeUnix;
+
+        activityManager.UpdateActivity(resultActivity, (result) =>
         {
             if (result == Discord.Result.Ok)
             {
@@ -36,13 +39,11 @@ class Program
         while (true)
         {
             activity2 = JsonActivityToDiscord("activity.json");
-            if(Equals(activity2, activity1))
+            if(!Equals(activity2, activity1))
             {
-                
-            }
-            else
-            {
-                activityManager.UpdateActivity(activity2, (result) =>
+                resultActivity = activity2;
+                resultActivity.Timestamps.Start = StartTimeUnix;
+                activityManager.UpdateActivity(resultActivity, (result) =>
                 {
                     if (result == Discord.Result.Ok)
                     {
