@@ -20,7 +20,7 @@ it will be this line<br> ![image](https://user-images.githubusercontent.com/9746
 you need go to _Rich Presence_ -> _Art Assets_ and "Add Image(s)" (It could take to 5 minutes). remember names of this images<br>
 ![image](https://user-images.githubusercontent.com/97464195/208200600-fdb8c7f0-5aa6-4976-b13b-71f776616498.png)
 
-6. enter your application id to _appId_
+6. enter names of your images and the application id
 ![Untitled](https://user-images.githubusercontent.com/97464195/208202593-6d5b2b48-2cb1-4380-af68-ef01b19e39fd.png) <br>
 Large and Small text is the text which shows when it've hovered <br>
 
