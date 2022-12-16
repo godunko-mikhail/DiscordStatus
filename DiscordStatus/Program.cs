@@ -12,13 +12,7 @@ class Program
 
         long StartTimeUnix = DateTimeOffset.Now.ToUnixTimeSeconds();
 
-        using (StreamReader fs = new StreamReader("config.json"))
-        {
-            var json = fs.ReadToEnd();
-            appConfiguration = JsonConvert.DeserializeObject<Config>(json);
-        }
-
-        var discord = new Discord.Discord(appConfiguration.appId, (UInt64)Discord.CreateFlags.Default);
+        var discord = new Discord.Discord(985112684771037236, (UInt64)Discord.CreateFlags.Default);
         var activityManager = discord.GetActivityManager();
 
         resultActivity = activity1;
