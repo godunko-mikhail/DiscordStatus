@@ -1,6 +1,8 @@
 ﻿using Discord;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Policy;
@@ -26,7 +28,7 @@ namespace DiscordStatus.UI
     /// </summary>
     public partial class MainWindow : Window 
     {
-        private InputModel inputModel = new InputModel();
+        private InputModel? inputModel;
 
         private Discord.Discord? _discord;
         private Discord.Discord discord
@@ -48,15 +50,37 @@ namespace DiscordStatus.UI
             timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 5);
             timer.Start();
-            Closed += new EventHandler(stopTimer);
+            Closed += stopTimer;
+            Closed += saveData;
+            try
+            {
+                inputModel = JsonConvert.DeserializeObject<InputModel?>(File.ReadAllText("backup.json"));
+            }
+            catch
+            {
+                inputModel = new InputModel();
+            }
+
+            this.DataContext = inputModel;
         }
         public void callback(object sender, EventArgs e)
         {
-            discord.RunCallbacks();
+            try
+            {
+                discord.RunCallbacks();
+            }
+            catch
+            {
+
+            }
         }
         public void stopTimer(object sender, EventArgs e)
         {
             timer.Stop();
+        }
+        public void saveData(object sender, EventArgs e)
+        {
+            File.WriteAllText("backup.json", JsonConvert.SerializeObject(inputModel));
         }
 
         private void Instruction_Click(object sender, RoutedEventArgs e)
