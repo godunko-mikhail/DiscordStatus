@@ -90,7 +90,7 @@ namespace DiscordStatus.UI
                 Type = ActivityType.Playing,
                 Name = "",
                 State = inputModel.State ?? "",
-                Details = inputModel.State ?? "",
+                Details = inputModel.Details ?? "",
                 Timestamps = new ActivityTimestamps()
                 {
                     Start = DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
