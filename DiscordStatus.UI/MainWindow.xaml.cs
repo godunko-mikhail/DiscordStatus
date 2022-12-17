@@ -1,44 +1,29 @@
 ﻿using Discord;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Security.Policy;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DiscordStatus.UI
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window 
+    public partial class MainWindow : Window
     {
         private InputModel? inputModel;
 
         private Discord.Discord? _discord;
         private Discord.Discord discord
         {
-            get 
-            { 
-                return _discord ??= new Discord.Discord(long.Parse(inputModel.AppId ?? "0"), (UInt64)Discord.CreateFlags.Default); 
-            } 
+            get
+            {
+                return _discord ??= new Discord.Discord(long.Parse(inputModel.AppId ?? "0"), (UInt64)Discord.CreateFlags.Default);
+            }
         }
-        
+
 
         private DispatcherTimer timer;
         private string status;
