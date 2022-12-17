@@ -4,7 +4,11 @@ It's a small program to set a custom discord playing status <br>
 
 ![image](https://user-images.githubusercontent.com/97464195/208199356-ff34fba6-ccf3-4317-a78a-cfe9d38878ba.png)<br> <br> <br>
 
-How to use: <br>
+## How to run this code:<br> 
+  To run this code you should add [discord sdk dll](https://discord.com/developers/docs/game-sdk/sdk-starter-guide) to your bin folder
+<br> <br><br> <br> <br>
+
+## How to use: <br>
 
 1. go to discord developer portal https://discord.com/developers/applications
 
