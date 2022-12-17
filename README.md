@@ -1,6 +1,6 @@
 # DiscordStatus
 
-It's a small program to set a custom discord playing status <br>
+It's a small program to set a custom discord playing status <br> <br>
 ![image](https://user-images.githubusercontent.com/97464195/208220542-e03df887-d82a-4796-9056-42d23a6a3057.png)
 
 ![image](https://user-images.githubusercontent.com/97464195/208199356-ff34fba6-ccf3-4317-a78a-cfe9d38878ba.png)<br> <br> <br>
