@@ -72,7 +72,7 @@ namespace DiscordStatus.UI
         }
         public void saveData(object sender, EventArgs e)
         {
-            File.WriteAllText("backup.json", JsonConvert.SerializeObject(inputModel));
+            File.WriteAllText("backup.json", JsonConvert.SerializeObject(new InputModel(inputModel)));
         }
 
         private void Instruction_Click(object sender, RoutedEventArgs e)
