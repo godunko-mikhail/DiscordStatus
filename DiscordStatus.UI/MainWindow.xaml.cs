@@ -53,10 +53,17 @@ namespace DiscordStatus.UI
             try
             {
                 discord.RunCallbacks();
+                if (inputModel != null)
+                {
+                    inputModel.Status = "Done.";
+                }
             }
-            catch
+            catch (Exception ex)
             {
-
+                if (inputModel != null)
+                {
+                    inputModel.Status = ex.Message;
+                }
             }
         }
         public void stopTimer(object sender, EventArgs e)
@@ -116,7 +123,7 @@ namespace DiscordStatus.UI
 
             activityManager.UpdateActivity(activity, (result) =>
             {
-                status = result.ToString();
+                inputModel.Status = result.ToString();
             });
             timer.Tick -= callback;
             timer.Tick += callback;

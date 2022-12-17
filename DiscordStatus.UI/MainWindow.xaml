@@ -12,10 +12,12 @@
         <Button x:Name="Instruction" 
                 Background="#454950"
                 BorderBrush="#454950"
-                Foreground="#FFF" 
+                Foreground="#d3d4d5" 
                 Content="Instruction" 
                 Margin="20,15,290,0" VerticalAlignment="Top" Click="Instruction_Click"/>
-        
+        <TextBlock Text="{Binding Path=Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Foreground="#d3d4d5" HorizontalAlignment="Left" Margin="150,15,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
+
         <Grid x:Name="AppSettings" Margin="0,63,0,0" Height="32" VerticalAlignment="Top">
             <Label FontSize="16"  Margin="50,0,0,0" Width="100" Height="32" x:Name="CustomAppIdLabel" Content="AppId" Foreground="#d3d4d5" HorizontalAlignment="Left" VerticalAlignment="Top" />
             <TextBox Text="{Binding Path=AppId}"
