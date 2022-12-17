@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:DiscordStatus.UI"
         mc:Ignorable="d"
         Title="DiscordStatus" 
-        ResizeMode="NoResize" Height="450" Width="400"
+        ResizeMode="NoResize" Height="470" Width="400"
         Background="#36393f">
-    <Grid x:Name="Main">
+    <Grid x:Name="Main" Height="450" Width="400">
         <Button x:Name="Instruction" 
                 Background="#454950"
                 BorderBrush="#454950"
@@ -17,16 +17,16 @@
                 Margin="20,15,290,0" VerticalAlignment="Top" Click="Instruction_Click"/>
         
         <Grid x:Name="AppSettings" Margin="0,63,0,0" Height="32" VerticalAlignment="Top">
-            <Label FontSize="16"  Margin="50,0,0,0" Width="100" Height="32" x:Name="AppIdLabel" Content="AppId" Foreground="#d3d4d5" HorizontalAlignment="Left" VerticalAlignment="Top" />
-            <TextBox VerticalContentAlignment="Center" FontSize="16"  Margin="150,0,0,0" Width="200" Height="32" x:Name="AppId" Background="#40444b" BorderBrush="#40444b" Foreground="#d3d4d5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" />
+            <Label FontSize="16"  Margin="50,0,0,0" Width="100" Height="32" x:Name="CustomAppIdLabel" Content="AppId" Foreground="#d3d4d5" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <TextBox VerticalContentAlignment="Center" FontSize="16"  Margin="150,0,0,0" Width="200" Height="32" x:Name="CustomAppId" Background="#40444b" BorderBrush="#40444b" Foreground="#d3d4d5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" TextChanged="CustomAppId_TextChanged" />
         </Grid>
 
         <Grid x:Name="Data" Margin="0,120,0,0" Height="69" VerticalAlignment="Top">
-            <Label FontSize="16"  Margin="50,0,0,0" Width="100" Height="32" x:Name="StateLabel" Content="First line" Foreground="#d3d4d5" HorizontalAlignment="Left" VerticalAlignment="Top" />
-            <TextBox FontSize="16"  Margin="150,0,0,0" Width="200" Height="32" x:Name="State" Background="#40444b" BorderBrush="#40444b" Foreground="#d3d4d5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="State_TextChanged"/>
+            <Label FontSize="16"  Margin="50,0,0,0" Width="100" Height="32" x:Name="CustomStateLabel" Content="First line" Foreground="#d3d4d5" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <TextBox VerticalContentAlignment="Center" FontSize="16"  Margin="150,0,0,0" Width="200" Height="32" x:Name="CustomState" Background="#40444b" BorderBrush="#40444b" Foreground="#d3d4d5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="CustomState_TextChanged"/>
 
-            <Label FontSize="16" Margin="50,37,0,0" Width="100" Height="32" x:Name="DetailsLabel" Content="Second line" Foreground="#d3d4d5"  HorizontalAlignment="Left" VerticalAlignment="Top" />
-            <TextBox FontSize="16" Margin="150,37,0,0" Width="200" Height="32" x:Name="Details"  Background="#40444b" Foreground="#d3d4d5" BorderBrush="#40444b" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="Details_TextChanged"/>
+            <Label FontSize="16" Margin="50,37,0,0" Width="100" Height="32" x:Name="CustomDetailsLabel" Content="Second line" Foreground="#d3d4d5"  HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <TextBox VerticalContentAlignment="Center" FontSize="16" Margin="150,37,0,0" Width="200" Height="32" x:Name="CustomDetails"  Background="#40444b" Foreground="#d3d4d5" BorderBrush="#40444b" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="CustomDetails_TextChanged"/>
         </Grid>
         <Grid x:Name="Assets" Height="143" Margin="0,217,0,0" VerticalAlignment="Top">
 
@@ -36,7 +36,7 @@
                    x:Name="LargeImageLabel" Content="Large image" HorizontalAlignment="Left" VerticalAlignment="Top"
                    Foreground="#d3d4d5"   />
             <TextBox FontSize="16" Width="200" Height="32" Margin="150,0,0,0" 
-                     x:Name="LargeImageData" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" TextChanged="TextBox_TextChanged"
+                     x:Name="LargeImageData" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" TextChanged="LargeImageData_TextChanged" VerticalContentAlignment="Center"
                      Background="#40444b" BorderBrush="#40444b" Foreground="#d3d4d5" />
 
 
@@ -45,8 +45,8 @@
                    x:Name="LargeTextLabel" Content="Large text" HorizontalAlignment="Left" VerticalAlignment="Top"
                    Foreground="#d3d4d5" />
             <TextBox FontSize="16" Width="200" Height="32" Margin="150,37,0,0" 
-                     x:Name="LargeTextData" HorizontalAlignment="Left" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" 
-                     Background="#40444b" BorderBrush="#40444b" Foreground="#d3d4d5"/>
+                     x:Name="LargeTextData" HorizontalAlignment="Left" TextWrapping="Wrap" Text=""  VerticalAlignment="Top"  VerticalContentAlignment="Center"
+                     Background="#40444b" BorderBrush="#40444b" Foreground="#d3d4d5" TextChanged="LargeTextData_TextChanged"/>
 
 
 
@@ -54,8 +54,8 @@
                    x:Name="SmallImageLabel" Content="Small image"  HorizontalAlignment="Left" VerticalAlignment="Top"
                    Foreground="#d3d4d5"/>
             <TextBox FontSize="16" Width="200" Height="32" Margin="150,74,0,0" 
-                     x:Name="SmallImageData" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top"
-                     Background="#40444b" BorderBrush="#40444b" Foreground="#d3d4d5"/>
+                     x:Name="SmallImageData" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" VerticalContentAlignment="Center"
+                     Background="#40444b" BorderBrush="#40444b" Foreground="#d3d4d5" TextChanged="SmallImageData_TextChanged"/>
 
 
 
@@ -63,15 +63,16 @@
                    x:Name="SmallTextLabel" Content="Small text" HorizontalAlignment="Left" VerticalAlignment="Top" 
                    Foreground="#d3d4d5"/>
             <TextBox FontSize="16" Width="200" Height="32" Margin="150,111,0,0" 
-                     x:Name="SmallTextData" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top"
-                     Background="#40444b" BorderBrush="#40444b" Foreground="#d3d4d5" />
+                     x:Name="SmallTextData" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" VerticalContentAlignment="Center"
+                     Background="#40444b" BorderBrush="#40444b" Foreground="#d3d4d5" TextChanged="SmallTextData_TextChanged" />
         </Grid>
 
-        <Button x:Name="Instruction" 
+        <Button x:Name="SetStatus" 
                 Background="#454950"
                 BorderBrush="#454950"
                 Foreground="#FFF" 
-                Content="Instruction" 
-                Margin="20,15,290,0" VerticalAlignment="Top"/>
+                Content="Set status" 
+                Height="28" Width="150"
+                Margin="125,386,125,0" VerticalAlignment="Top" Click="SetStatus_Click"/>
     </Grid>
 </Window>
